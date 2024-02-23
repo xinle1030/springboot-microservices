@@ -2,6 +2,7 @@ package net.javaguides.springboot.bean;
 
 import org.springframework.stereotype.Component;
 
+// return Java bean as JSON object
 @Component
 public class Student {
     private int id;
