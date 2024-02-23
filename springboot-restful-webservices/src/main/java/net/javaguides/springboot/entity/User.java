@@ -1,6 +1,8 @@
 package net.javaguides.springboot.entity;
 
 import jakarta.persistence.*;
+
+// use lombok annotations to reduce boilerplate code such as constructor, getter and setter
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity // name this class as a JPA entity
 @Table(name = "users")
 public class User {
 

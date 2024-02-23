@@ -19,10 +19,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+// annotate implemented service class using @Annotate
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    // inject UserRepository into this class
     private UserRepository userRepository;
 
     private ModelMapper modelMapper;
