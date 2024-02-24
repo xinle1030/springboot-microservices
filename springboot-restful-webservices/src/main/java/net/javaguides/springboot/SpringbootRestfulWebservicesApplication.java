@@ -41,5 +41,5 @@ public class SpringbootRestfulWebservicesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestfulWebservicesApplication.class, args);
 	}
-
+ 
 }
