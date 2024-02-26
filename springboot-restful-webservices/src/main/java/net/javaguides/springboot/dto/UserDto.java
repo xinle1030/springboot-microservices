@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// for Swagger info
 @Schema(
         description = "UserDto Model Information"
 )
@@ -19,6 +20,7 @@ public class UserDto {
 
     private Long id;
 
+    // for Swagger info
     @Schema(
             description = "User First Name"
     )

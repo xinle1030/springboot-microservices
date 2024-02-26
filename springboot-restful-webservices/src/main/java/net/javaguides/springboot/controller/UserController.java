@@ -18,6 +18,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// Tag for controller information on swagger
 @Tag(name = "CRUD REST APIs for User Resource", description = "CRUD REST APIs - Create User, Update User, Get User, Get All Users, Delete User")
 @RestController
 @AllArgsConstructor
@@ -26,6 +27,7 @@ public class UserController {
 
         private UserService userService;
 
+        // swagger info (@Operation, @ApiResponse)
         @Operation(summary = "Create User REST API", description = "Create User REST API is used to save user in a database")
         @ApiResponse(responseCode = "201", description = "HTTP Status 201 CREATED")
         // build create User REST API
