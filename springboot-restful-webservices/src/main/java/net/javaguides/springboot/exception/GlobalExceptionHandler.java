@@ -17,9 +17,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// @ExceptionHandler: handle specific exception and return custom response to client in controller
+// @ControllerAdvice: handle specific and global exception globally
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+    // handle specific exception
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest){
@@ -34,6 +37,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    // handle specific exception
     @ExceptionHandler(EmailAlreadyExistsException.class)
     public ResponseEntity<ErrorDetails> handleEmailAlreadyExistsException(EmailAlreadyExistsException exception,
                                                                         WebRequest webRequest){
@@ -48,6 +52,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
+    // handle global exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGlobalException(Exception exception,
                                                                           WebRequest webRequest){

@@ -65,6 +65,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserById(Long userId) {
+
+        // use lambda expression to throw exception
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new ResourceNotFoundException("User", "id", userId));
         // return UserMapper.mapToUserDto(user);
