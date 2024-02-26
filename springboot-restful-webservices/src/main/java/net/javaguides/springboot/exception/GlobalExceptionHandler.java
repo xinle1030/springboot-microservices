@@ -67,11 +67,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    // handle for request validation
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, 
                                                                   HttpHeaders headers, 
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
+
+        // store multiple request validation errors                                                            
         Map<String, String> errors = new HashMap<>();
         List<ObjectError> errorList = ex.getBindingResult().getAllErrors();
 

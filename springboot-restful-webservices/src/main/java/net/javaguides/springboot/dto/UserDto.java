@@ -22,7 +22,7 @@ public class UserDto {
     @Schema(
             description = "User First Name"
     )
-    // User first name should not be null or empty
+    // User first name should not be null or empty, configure error message using message =
     @NotEmpty(message = "User first name should not be null or empty")
     private String firstName;
 
