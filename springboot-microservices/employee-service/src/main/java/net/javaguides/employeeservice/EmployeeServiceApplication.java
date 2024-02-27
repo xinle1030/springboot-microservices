@@ -10,8 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-@EnableFeignClients
-@EnableEurekaClient
+@EnableFeignClients // to enable component scanning for interfaces that declare that they are Feign clients
+@EnableEurekaClient 
 public class EmployeeServiceApplication {
 
 //	@Bean
