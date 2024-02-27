@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-   // private RestTemplate restTemplate;
+    // private RestTemplate restTemplate;
     private WebClient webClient;
     private APIClient apiClient;
 
@@ -43,7 +43,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return savedEmployeeDto;
     }
 
-    //@CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getDefaultDepartment")
+    // @CircuitBreaker(name = "${spring.application.name}", fallbackMethod =
+    // "getDefaultDepartment")
     @Retry(name = "${spring.application.name}", fallbackMethod = "getDefaultDepartment")
     @Override
     public APIResponseDto getEmployeeById(Long employeeId) {
@@ -51,18 +52,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         LOGGER.info("inside getEmployeeById() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
-//        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://DEPARTMENT-SERVICE/api/departments/" + employee.getDepartmentCode(),
-//                DepartmentDto.class);
-//
-//        DepartmentDto departmentDto = responseEntity.getBody();
+        // 1. USE REST TEMPLATE
+        // ResponseEntity<DepartmentDto> responseEntity =
+        // restTemplate.getForEntity("http://DEPARTMENT-SERVICE/api/departments/" +
+        // employee.getDepartmentCode(),
+        // DepartmentDto.class);
+        //
+        // DepartmentDto departmentDto = responseEntity.getBody();
 
+        // 2. USE WEB CLIENT
         DepartmentDto departmentDto = webClient.get()
                 .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
                 .retrieve()
                 .bodyToMono(DepartmentDto.class)
                 .block();
 
-      //  DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
+        // 3. USE SPRING CLOUD OPEN FEIGN
+        // DepartmentDto departmentDto =
+        // apiClient.getDepartment(employee.getDepartmentCode());
 
         OrganizationDto organizationDto = webClient.get()
                 .uri("http://localhost:8083/api/organizations/" + employee.getOrganizationCode())
