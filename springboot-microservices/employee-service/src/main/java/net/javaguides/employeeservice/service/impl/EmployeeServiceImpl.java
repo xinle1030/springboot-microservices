@@ -23,6 +23,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+    // for logging info
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
     private EmployeeRepository employeeRepository;
@@ -49,6 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public APIResponseDto getEmployeeById(Long employeeId) {
 
+        // for logging info
         LOGGER.info("inside getEmployeeById() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
@@ -88,6 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public APIResponseDto getDefaultDepartment(Long employeeId, Exception exception) {
 
+        // for logging info
         LOGGER.info("inside getDefaultDepartment() method");
 
         Employee employee = employeeRepository.findById(employeeId).get();
