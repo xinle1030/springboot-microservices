@@ -11,6 +11,7 @@ public class OrderConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderConsumer.class);
 
+    // subscribe to the topic and consume the order event
     @KafkaListener(
             topics = "${spring.kafka.topic.name}"
             ,groupId = "${spring.kafka.consumer.group-id}"

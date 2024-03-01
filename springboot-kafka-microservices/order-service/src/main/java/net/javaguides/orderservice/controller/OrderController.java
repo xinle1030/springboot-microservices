@@ -20,8 +20,9 @@ public class OrderController {
         this.orderProducer = orderProducer;
     }
 
+    // one an order is made, send the message to the topic using Kafka
     @PostMapping("/orders")
-    public String placeOrder(@RequestBody Order order){
+    public String placeOrder(@RequestBody Order order) {
 
         order.setOrderId(UUID.randomUUID().toString());
 
